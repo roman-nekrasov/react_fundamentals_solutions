@@ -8,9 +8,9 @@ const UserFilter = ({ users }) => {
     useEffect(() => {
         const filtered = users.filter(
             ({ name, age }) =>
-                !enteredName ||
-                (name.toLowerCase().includes(enteredName.toLowerCase()) &&
-                    (!enteredAge || age.toString().includes(enteredAge)))
+                (!enteredName ||
+                    name.toLowerCase().includes(enteredName.toLowerCase())) &&
+                (!enteredAge || age.toString().includes(enteredAge))
         );
         setSelectedUsers(filtered);
     }, [enteredName, enteredAge, users]);
@@ -38,20 +38,22 @@ const UserFilter = ({ users }) => {
             <div>
                 <table>
                     <thead>
-                        <th>id</th>
-                        <th>name</th>
-                        <th>age, years</th>
-                    </thead>
-                </table>
-                <tbody>
-                    {selectedUsers.map(({ id, name, age }) => (
-                        <tr key={id}>
-                            <td>{id}</td>
-                            <td>{name}</td>
-                            <td>{age}</td>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>age, years</th>
                         </tr>
-                    ))}
-                </tbody>
+                    </thead>
+                    <tbody>
+                        {selectedUsers.map(({ id, name, age }) => (
+                            <tr key={id}>
+                                <td>{id}</td>
+                                <td>{name}</td>
+                                <td>{age}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

@@ -4,8 +4,8 @@ const AdvancedTimer = ({ delay }) => {
     const [passedTime, setPassedTime] = useState(0);
     const [isRunning, setIsRunning] = useState(true);
 
-    const restart = () => {
-        setIsRunning(true);
+    const reset = () => {
+        setIsRunning(false);
         setPassedTime(0);
     };
 
@@ -40,7 +40,7 @@ const AdvancedTimer = ({ delay }) => {
                 <span style={{ fontSize: "18px" }}>{passedTime}</span>
             </p>
             <button onClick={startAndPause}>start/pause</button>
-            <button onClick={restart}>restart</button>
+            <button onClick={reset}>reset</button>
         </div>
     );
 };

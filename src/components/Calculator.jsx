@@ -46,8 +46,13 @@ const Calculator = () => {
                 value={num2}
                 onChange={(e) => setNum2(e.target.value)}
             />
-            <span>=</span>
-            {num1 && num2 && <span>{result}</span>}
+
+            {num1 && num2 && (
+                <>
+                    <span>=</span>
+                    <span>{result}</span>
+                </>
+            )}
         </div>
     );
 };
